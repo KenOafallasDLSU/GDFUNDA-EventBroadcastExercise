@@ -13,12 +13,13 @@ public class GhostSpawn : MonoBehaviour
     void Start()
     {
         this.ghost.SetActive(false);
-        EventBroadcaster.Instance.AddObserver(EventNames.S12_Events.ON_SPAWN_BUTTON_CLICKED, this.OnSpawnEvent);
+        EventBroadcaster.Instance.AddObserver(EventNames.S12_Events.ON_SPAWN_THEA_BUTTON_CLICKED, this.OnSpawnEvent);
+        EventBroadcaster.Instance.AddObserver(EventNames.S12_Events.ON_CLEAR_BUTTON_CLICKED, this.OnClearEvent);
     }
 
     private void OnDestroy()
     {
-        EventBroadcaster.Instance.RemoveObserver(EventNames.S12_Events.ON_SPAWN_BUTTON_CLICKED);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.S12_Events.ON_SPAWN_THEA_BUTTON_CLICKED);
     }
 
     private void OnSpawnEvent(Parameters parameters)
@@ -27,11 +28,19 @@ public class GhostSpawn : MonoBehaviour
 
         for (int i = 0; i < nSpawns; i++)
         {
-            GameObject copy = GameObject.Instantiate(ghost, this.transform);
+            GameObject copy = GameObject.Instantiate(this.ghost, this.transform.parent);
             copy.SetActive(true);
             this.ghosts.Add(copy);
         }
+    }
 
+    private void OnClearEvent()
+    {
+        for (int i = 0; i < this.ghosts.Count; i++)
+        {
+            GameObject.Destroy(this.ghosts[i]);
+        }
+        this.ghosts.Clear();
     }
 
     // Update is called once per frame
