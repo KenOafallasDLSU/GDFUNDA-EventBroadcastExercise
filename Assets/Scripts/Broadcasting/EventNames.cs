@@ -32,9 +32,12 @@ public class EventNames {
 		public const string ON_DELETE_ALL = "ON_DELETE_ALL";
 	}
 
-	public class S12_Events
-    {
+	public class S12_Events {
 		public const string ON_SPAWN_BUTTON_CLICKED = "SPAWN_BUTTON_CLICKED";
+		public const string ON_SPAWN_MICA_BUTTON_CLICKED = "SPAWN_MICA_BUTTON_CLICKED";
+		public const string ON_SPAWN_THEA_BUTTON_CLICKED = "SPAWN_THEA_BUTTON_CLICKED";
+		public const string ON_SPAWN_DEBBIE_BUTTON_CLICKED = "SPAWN_DEBBIE_BUTTON_CLICKED";
+		public const string ON_CLEAR_BUTTON_CLICKED = "CLEAR_BUTTON_CLICKED";
 
 	}
 }
