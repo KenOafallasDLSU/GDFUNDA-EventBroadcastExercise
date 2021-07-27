@@ -13,8 +13,8 @@ public class TreeSpawn : MonoBehaviour
     void Start()
     {
         this.tree.SetActive(false);
-        EventBroadcaster.Instance.AddObserver(EventNames.S12_Events.ON_SPAWN_BUTTON_CLICKED, this.OnSpawnEvent);
-
+        EventBroadcaster.Instance.AddObserver(EventNames.S12_Events.ON_SPAWN_MICA_BUTTON_CLICKED, this.OnSpawnEvent);
+        EventBroadcaster.Instance.AddObserver(EventNames.S12_Events.ON_CLEAR_BUTTON_CLICKED, this.OnClearEvent);
     }
 
     private void OnDestroy()
@@ -39,5 +39,13 @@ public class TreeSpawn : MonoBehaviour
             this.treeList.Add(copy);
         }
 
+    }
+    private void OnClearEvent()
+    {
+        for (int i = 0; i < this.treeList.Count; i++)
+        {
+            GameObject.Destroy(this.treeList[i]);
+        }
+        this.treeList.Clear();
     }
 }
